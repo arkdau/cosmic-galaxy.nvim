@@ -17,65 +17,102 @@ function M.apply(C)
   set(0, "WinSeparator",  { bg = "NONE" })
 
   --------------------------------------------------------------------
-  -- Syntax
+  -- Base syntax
   --------------------------------------------------------------------
   set(0, "Comment", { fg = C.gray, italic = true })
 
-  set(0, "@number", { fg = C.gold })
-  set(0, "@float",  { fg = C.gold })
-  set(0, "@type",   { fg = C.violet })
+  set(0, "@number",   { fg = C.gold })
+  set(0, "@float",    { fg = C.gold })
+  set(0, "@type",     { fg = C.violet })
   set(0, "@variable", { fg = C.cyan })
   set(0, "@field",    { fg = C.cyan })
   set(0, "@string",   { fg = C.pink })
   set(0, "@constant", { fg = C.ember })
 
   --------------------------------------------------------------------
-  -- GALAXY BRACKETS ULTRA+
+  -- ULTRA+ – Galaxy Brackets (static)
   --------------------------------------------------------------------
 
-  -- () – funkcje (stały kolor)
-  set(0, "CosmicParenRound",  { fg = C.gold, bold = true })
+  -- () – funkcje
+  set(0, "CosmicParenRound",  { fg = C.gold,  bold = true })
+  -- [] – tablice
+  set(0, "CosmicParenSquare", { fg = C.cyan,  bold = true })
+  -- {} – bloki (bazowy kolor)
+  set(0, "CosmicParenCurly",  { fg = C.teal,  bold = true })
 
-  -- [] – tablice (stały kolor)
-  set(0, "CosmicParenSquare", { fg = C.cyan, bold = true })
-
-  --------------------------------------------------------------------
-  -- GALAXY GRADIENT FOR {}
-  -- 7‑poziomowy neonowy gradient COSMIC
-  --------------------------------------------------------------------
-  set(0, "RainbowDelimiterRed",     { fg = C.gold })    -- level 1
-  set(0, "RainbowDelimiterYellow",  { fg = C.teal })    -- level 2
-  set(0, "RainbowDelimiterBlue",    { fg = C.violet })  -- level 3
-  set(0, "RainbowDelimiterOrange",  { fg = C.green })   -- level 4
-  set(0, "RainbowDelimiterGreen",   { fg = C.pink })    -- level 5
-  set(0, "RainbowDelimiterCyan",    { fg = C.ember })   -- level 6
-  set(0, "RainbowDelimiterViolet",  { fg = C.cyan })    -- level 7
+  -- RainbowDelimiters – gradient bazowy
+  set(0, "RainbowDelimiterRed",     { fg = C.gold })
+  set(0, "RainbowDelimiterYellow",  { fg = C.teal })
+  set(0, "RainbowDelimiterBlue",    { fg = C.violet })
+  set(0, "RainbowDelimiterOrange",  { fg = C.green })
+  set(0, "RainbowDelimiterGreen",   { fg = C.pink })
+  set(0, "RainbowDelimiterCyan",    { fg = C.ember })
+  set(0, "RainbowDelimiterViolet",  { fg = C.cyan })
 
   --------------------------------------------------------------------
-  -- POINTER FLOW ULTRA+
-  -- → => :: . ->  — dynamiczne neonowe kolory
+  -- ULTRA+ – Pointer flow
   --------------------------------------------------------------------
-  set(0, "@punctuation.delimiter", { fg = C.teal })     -- np. ::
-  set(0, "@punctuation.special",   { fg = C.violet })   -- np. =>
-  set(0, "@punctuation.accessor",  { fg = C.green })    -- np. .
-  set(0, "@operator",              { fg = C.gold })     -- np. ->
+  set(0, "@punctuation.delimiter", { fg = C.teal })    -- np. ::
+  set(0, "@punctuation.special",   { fg = C.violet })  -- np. =>
+  set(0, "@punctuation.accessor",  { fg = C.green })   -- np. .
+  set(0, "@operator",              { fg = C.gold })    -- np. ->
 
-  --------------------------------------------------------------------
-  -- OPERATOR GLOW (delikatny neon)
-  --------------------------------------------------------------------
   set(0, "GalaxyOperatorGlow", {
     fg = C.teal,
     bold = true,
   })
 
-  --------------------------------------------------------------------
-  -- ZEWNĘTRZNE NAWIASY FUNKCJI (pulsujący efekt)
-  --------------------------------------------------------------------
   set(0, "@punctuation.bracket.call", {
     fg = C.gold,
     bold = true,
     standout = true,
   })
+
+  --------------------------------------------------------------------
+  -- ULTRA++ – per‑bracket gradient ({} / () / [])
+  -- Zakładamy, że RainbowDelimiters używa różnych grup dla typów nawiasów
+  --------------------------------------------------------------------
+
+  -- Curly {} – scope / blok
+  set(0, "CosmicCurlyLevel1", { fg = C.teal })
+  set(0, "CosmicCurlyLevel2", { fg = C.cyan })
+  set(0, "CosmicCurlyLevel3", { fg = C.violet })
+  set(0, "CosmicCurlyLevel4", { fg = C.pink })
+
+  -- Round () – wywołania / wyrażenia
+  set(0, "CosmicRoundLevel1", { fg = C.gold })
+  set(0, "CosmicRoundLevel2", { fg = C.ember })
+  set(0, "CosmicRoundLevel3", { fg = C.green })
+
+  -- Square [] – indeksy / tablice
+  set(0, "CosmicSquareLevel1", { fg = C.cyan })
+  set(0, "CosmicSquareLevel2", { fg = C.teal })
+  set(0, "CosmicSquareLevel3", { fg = C.violet })
+
+  --------------------------------------------------------------------
+  -- ULTRA++ – Scope glow (bloki {})
+  --------------------------------------------------------------------
+
+  -- Ogólny „scope” – tło delikatnie rozjaśnione
+  set(0, "CosmicScopeBlock", {
+    bg = C.bg_scope or "#181825",
+  })
+
+  -- Aktywny scope (np. z pluginu, który podbija tę grupę)
+  set(0, "CosmicScopeActive", {
+    bg = C.bg_scope_active or "#1e1e2e",
+    bold = true,
+  })
+
+  --------------------------------------------------------------------
+  -- ULTRA++ – Active line + flow
+  --------------------------------------------------------------------
+  set(0, "CosmicActiveLine", {
+    bg = C.bg_active or "#11111b",
+  })
+
+  -- Możesz potem powiązać to z CursorLine:
+  -- set(0, "CursorLine", { link = "CosmicActiveLine" })
 
 end
 

@@ -1,0 +1,19 @@
+# Lua
+*.luac
+
+# Neovim swap/backup
+*.swp
+*.swo
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary
+tmp/
+temp/
+
