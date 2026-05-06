@@ -1,0 +1,78 @@
+
+local M = {}
+
+function M.apply(C)
+  local set = vim.api.nvim_set_hl
+
+  --------------------------------------------------------------------
+  -- UI (transparent)
+  --------------------------------------------------------------------
+  set(0, "Normal", { fg = C.fg, bg = "NONE" })
+  set(0, "NormalFloat", { bg = "NONE" })
+  set(0, "FloatBorder", { bg = "NONE" })
+  set(0, "SignColumn", { bg = "NONE" })
+  set(0, "LineNr", { bg = "NONE" })
+  set(0, "CursorLine", { bg = "NONE" })
+  set(0, "CursorLineNr", { bg = "NONE" })
+  set(0, "StatusLine", { bg = "NONE" })
+  set(0, "WinSeparator", { bg = "NONE" })
+
+  --------------------------------------------------------------------
+  -- Syntax
+  --------------------------------------------------------------------
+  set(0, "Comment", { fg = C.gray, italic = true })
+
+  set(0, "@operator", { fg = C.teal })
+  set(0, "Operator", { fg = C.teal })
+
+  set(0, "@number", { fg = C.gold })
+  set(0, "@float", { fg = C.gold })
+  set(0, "Number", { fg = C.gold })
+  set(0, "Float", { fg = C.gold })
+
+  set(0, "@type", { fg = C.violet })
+  set(0, "@type.builtin", { fg = C.violet })
+
+  set(0, "@variable", { fg = C.cyan })
+  set(0, "@field", { fg = C.cyan })
+
+  set(0, "@function", { fg = C.green })
+  set(0, "@function.call", { fg = C.green })
+
+  set(0, "@string", { fg = C.pink })
+  set(0, "@constant", { fg = C.ember })
+
+  --------------------------------------------------------------------
+  -- SPECYFICZNE KOLORY NAWIASÓW
+  --------------------------------------------------------------------
+  set(0, "CosmicParenRound", { fg = C.gold, bold = true })
+--  set(0, "CosmicParenCurly", { fg = C.ember, bold = true })
+  set(0, "CosmicParenSquare", { fg = C.cyan, bold = true })
+
+  --------------------------------------------------------------------
+  -- MAPOWANIE ZNAKÓW NAWIASÓW
+  --------------------------------------------------------------------
+  vim.fn.matchadd("CosmicParenRound", "[()]", 5)
+  vim.fn.matchadd("CosmicParenCurly", "[{}]", 5)
+--  vim.fn.matchadd("CosmicParenSquare", [[[
+--
+--\[\]
+--
+--]]], 5)
+
+  --------------------------------------------------------------------
+  -- ZEWNĘTRZNE NAWIASY FUNKCJI
+  --------------------------------------------------------------------
+  set(0, "@punctuation.bracket.call", { fg = C.gold, bold = true })
+
+  --------------------------------------------------------------------
+  -- RAINBOW BRACKETS (LEVEL COLORS)
+  --------------------------------------------------------------------
+  set(0, "RainbowDelimiterRed", { fg = C.gold })
+  set(0, "RainbowDelimiterYellow", { fg = C.cyan })
+  set(0, "RainbowDelimiterBlue", { fg = C.violet })
+  set(0, "RainbowDelimiterOrange", { fg = C.green })
+  set(0, "RainbowDelimiterGreen", { fg = C.pink })
+end
+
+return M
