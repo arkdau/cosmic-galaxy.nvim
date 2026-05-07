@@ -739,6 +739,123 @@ return {
       set(0, "@lifetime.heap",   { link = "CosmicLifetimeHeap" })
       set(0, "@lifetime.global", { link = "CosmicLifetimeGlobal" })
     end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++ — Branch Prediction Glow
+    --------------------------------------------------------------------
+    local function apply_branch_prediction_glow(C, set)
+      set(0, "CosmicBranchLikely", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicBranchUnlikely", {
+        fg = C.gray,
+        italic = true,
+      })
+
+      set(0, "CosmicBranchMispredict", {
+        fg = C.pink,
+        bold = true,
+        standout = true,
+      })
+
+      set(0, "@branch.likely",     { link = "CosmicBranchLikely" })
+      set(0, "@branch.unlikely",   { link = "CosmicBranchUnlikely" })
+      set(0, "@branch.mispredict", { link = "CosmicBranchMispredict" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++ — Cache Flow Heatmap
+    --------------------------------------------------------------------
+    local function apply_cache_flow_heatmap(C, set)
+      set(0, "CosmicCacheL1", {
+        fg = C.gold,
+        bold = true,
+      })
+
+      set(0, "CosmicCacheL2", {
+        fg = C.ember,
+      })
+
+      set(0, "CosmicCacheL3", {
+        fg = C.violet,
+      })
+
+      set(0, "CosmicCacheRAM", {
+        fg = C.cyan,
+        italic = true,
+      })
+
+      set(0, "@cache.l1",  { link = "CosmicCacheL1" })
+      set(0, "@cache.l2",  { link = "CosmicCacheL2" })
+      set(0, "@cache.l3",  { link = "CosmicCacheL3" })
+      set(0, "@cache.ram", { link = "CosmicCacheRAM" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++ — Register Flow Glow
+    --------------------------------------------------------------------
+    local function apply_register_flow_glow(C, set)
+      set(0, "CosmicRegHot", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicRegWarm", {
+        fg = C.cyan,
+      })
+
+      set(0, "CosmicRegCold", {
+        fg = C.gray,
+        italic = true,
+      })
+
+      set(0, "@reg.hot",  { link = "CosmicRegHot" })
+      set(0, "@reg.warm", { link = "CosmicRegWarm" })
+      set(0, "@reg.cold", { link = "CosmicRegCold" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++ — Semantic Timewarp
+    --------------------------------------------------------------------
+    local function apply_semantic_timewarp(C, set)
+      set(0, "CosmicTimeNew", {
+        fg = C.green,
+        bold = true,
+      })
+
+      set(0, "CosmicTimeModified", {
+        fg = C.teal,
+      })
+
+      set(0, "CosmicTimeRemoved", {
+        fg = C.pink,
+        italic = true,
+      })
+
+      set(0, "@time.new",      { link = "CosmicTimeNew" })
+      set(0, "@time.modified", { link = "CosmicTimeModified" })
+      set(0, "@time.removed",  { link = "CosmicTimeRemoved" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++ — Micro-Optimization Hints
+    --------------------------------------------------------------------
+    local function apply_micro_opt_hints(C, set)
+      set(0, "CosmicOptInline", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicOptUnroll", {
+        fg = C.gold,
+        bold = true,
+      })
+
+      set(0, "CosmicOptVectorize", {
+        fg = C.violet,
+      })
+
+      set(0, "@opt.inline",    { link = "CosmicOptInline" })
+      set(0, "@opt.unroll",    { link = "CosmicOptUnroll" })
+      set(0, "@opt.vectorize", { link = "CosmicOptVectorize" })
+    end
 
     apply_ultra_plus_plus_plus(C, set)
     apply_ultra_plus_4(C, set)
@@ -756,6 +873,11 @@ return {
     apply_escape_analysis(C, set)
     apply_alias_tracking(C, set)
     apply_lifetime_zones(C, set)
+    apply_branch_prediction_glow(C, set)
+    apply_cache_flow_heatmap(C, set)
+    apply_register_flow_glow(C, set)
+    apply_semantic_timewarp(C, set)
+    apply_micro_opt_hints(C, set)
 
   end
 }
