@@ -856,6 +856,98 @@ return {
       set(0, "@opt.unroll",    { link = "CosmicOptUnroll" })
       set(0, "@opt.vectorize", { link = "CosmicOptVectorize" })
     end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++++ — Pipeline Flow Glow
+    --------------------------------------------------------------------
+    local function apply_pipeline_flow_glow(C, set)
+      set(0, "CosmicPipeStart", {
+        fg = C.cyan,
+        bold = true,
+      })
+
+      set(0, "CosmicPipeMid", {
+        fg = C.teal,
+      })
+
+      set(0, "CosmicPipeEnd", {
+        fg = C.violet,
+        bold = true,
+        standout = true,
+      })
+
+      set(0, "@pipe.start", { link = "CosmicPipeStart" })
+      set(0, "@pipe.mid",   { link = "CosmicPipeMid" })
+      set(0, "@pipe.end",   { link = "CosmicPipeEnd" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++++ — Semantic Energy Map
+    --------------------------------------------------------------------
+    local function apply_semantic_energy_map(C, set)
+      set(0, "CosmicEnergyLow", {
+        fg = C.cyan,
+      })
+
+      set(0, "CosmicEnergyMedium", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicEnergyHigh", {
+        fg = C.ember,
+        bold = true,
+        standout = true,
+      })
+
+      set(0, "@energy.low",    { link = "CosmicEnergyLow" })
+      set(0, "@energy.medium", { link = "CosmicEnergyMedium" })
+      set(0, "@energy.high",   { link = "CosmicEnergyHigh" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++++ — Branch Entropy Glow
+    --------------------------------------------------------------------
+    local function apply_branch_entropy_glow(C, set)
+      set(0, "CosmicEntropyLow", {
+        fg = C.green,
+      })
+
+      set(0, "CosmicEntropyMedium", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicEntropyHigh", {
+        fg = C.pink,
+        bold = true,
+        standout = true,
+      })
+
+      set(0, "@entropy.low",    { link = "CosmicEntropyLow" })
+      set(0, "@entropy.medium", { link = "CosmicEntropyMedium" })
+      set(0, "@entropy.high",   { link = "CosmicEntropyHigh" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++++ — Semantic Risk Zones
+    --------------------------------------------------------------------
+    local function apply_semantic_risk_zones(C, set)
+      set(0, "CosmicRiskSafe", {
+        fg = C.green,
+      })
+
+      set(0, "CosmicRiskWarning", {
+        fg = C.gold,
+        bold = true,
+      })
+
+      set(0, "CosmicRiskDanger", {
+        fg = C.pink,
+        bold = true,
+        standout = true,
+      })
+
+      set(0, "@risk.safe",    { link = "CosmicRiskSafe" })
+      set(0, "@risk.warning", { link = "CosmicRiskWarning" })
+      set(0, "@risk.danger",  { link = "CosmicRiskDanger" })
+    end
 
     apply_ultra_plus_plus_plus(C, set)
     apply_ultra_plus_4(C, set)
@@ -878,6 +970,10 @@ return {
     apply_register_flow_glow(C, set)
     apply_semantic_timewarp(C, set)
     apply_micro_opt_hints(C, set)
+    apply_pipeline_flow_glow(C, set)
+    apply_semantic_energy_map(C, set)
+    apply_branch_entropy_glow(C, set)
+    apply_semantic_risk_zones(C, set)
 
   end
 }
