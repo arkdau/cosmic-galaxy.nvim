@@ -369,6 +369,81 @@ return {
       set(0, "@punctuation.delimiter.flow",   { link = "CosmicFlowZoneProcess" })
     end
     apply_ultra_plus_4(C, set)
+    --------------------------------------------------------------------
+    -- ULTRA+++++ — Pointer & Memory Flow + Complexity Glow
+    --------------------------------------------------------------------
+    local function apply_ultra_plus_5(C, set)
+      ------------------------------------------------------------------
+      -- 1. Pointer Flow (wskaźniki, dereferencje, adresy)
+      ------------------------------------------------------------------
+      set(0, "CosmicPtrOperator", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicPtrAddress", {
+        fg = C.cyan,
+      })
+
+      set(0, "CosmicPtrDeref", {
+        fg = C.violet,
+        bold = true,
+      })
+
+      -- Treesitter (C, C++, Rust, itp.)
+      set(0, "@operator.pointer", { link = "CosmicPtrOperator" })
+      set(0, "@operator.address", { link = "CosmicPtrAddress" })
+      set(0, "@operator.dereference", { link = "CosmicPtrDeref" })
+
+      ------------------------------------------------------------------
+      -- 2. Memory Flow (alokacja, dealokacja, zarządzanie pamięcią)
+      ------------------------------------------------------------------
+      set(0, "CosmicMemAlloc", {
+        fg = C.green,
+        bold = true,
+      })
+
+      set(0, "CosmicMemFree", {
+        fg = C.ember,
+        bold = true,
+      })
+
+      set(0, "CosmicMemLeakRisk", {
+        fg = C.pink,
+        bold = true,
+        standout = true,
+      })
+
+      -- Przykładowe mapowanie (C / C++ / Rust / Zig)
+      set(0, "@function.builtin.memory.alloc", { link = "CosmicMemAlloc" })
+      set(0, "@function.builtin.memory.free",  { link = "CosmicMemFree" })
+
+      ------------------------------------------------------------------
+      -- 3. Complexity Glow (złożoność fragmentu kodu)
+      ------------------------------------------------------------------
+      set(0, "CosmicComplexityLow", {
+        fg = C.cyan,
+      })
+
+      set(0, "CosmicComplexityMid", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicComplexityHigh", {
+        fg = C.violet,
+        bold = true,
+        standout = true,
+      })
+
+      ------------------------------------------------------------------
+      -- 4. Semantic hints (pętle, zagnieżdżenia, warunki)
+      ------------------------------------------------------------------
+      set(0, "@complexity.low",  { link = "CosmicComplexityLow" })
+      set(0, "@complexity.mid",  { link = "CosmicComplexityMid" })
+      set(0, "@complexity.high", { link = "CosmicComplexityHigh" })
+    end
+    apply_ultra_plus_5(C, set)
   end
 }
 
