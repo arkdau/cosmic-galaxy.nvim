@@ -948,6 +948,92 @@ return {
       set(0, "@risk.warning", { link = "CosmicRiskWarning" })
       set(0, "@risk.danger",  { link = "CosmicRiskDanger" })
     end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++++ — Semantic Gravity
+    --------------------------------------------------------------------
+    local function apply_semantic_gravity(C, set)
+      set(0, "CosmicGravityWeak", {
+	fg = C.cyan,
+      })
+
+      set(0, "CosmicGravityMedium", {
+	fg = C.teal,
+	bold = true,
+      })
+
+      set(0, "CosmicGravityStrong", {
+	fg = C.violet,
+	bold = true,
+	standout = true,
+      })
+
+      set(0, "@gravity.weak",   { link = "CosmicGravityWeak" })
+      set(0, "@gravity.medium", { link = "CosmicGravityMedium" })
+      set(0, "@gravity.strong", { link = "CosmicGravityStrong" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++++ — Data Orbit Map
+    --------------------------------------------------------------------
+    local function apply_data_orbit_map(C, set)
+      set(0, "CosmicOrbitInner", {
+	fg = C.teal,
+	bold = true,
+      })
+
+      set(0, "CosmicOrbitMiddle", {
+	fg = C.cyan,
+      })
+
+      set(0, "CosmicOrbitOuter", {
+	fg = C.gray,
+	italic = true,
+      })
+
+      set(0, "@orbit.inner",  { link = "CosmicOrbitInner" })
+      set(0, "@orbit.middle", { link = "CosmicOrbitMiddle" })
+      set(0, "@orbit.outer",  { link = "CosmicOrbitOuter" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++++ — Pointer Warp Glow
+    --------------------------------------------------------------------
+    local function apply_pointer_warp_glow(C, set)
+      set(0, "CosmicPtrWarpIn", {
+	fg = C.teal,
+	bold = true,
+      })
+
+      set(0, "CosmicPtrWarpOut", {
+	fg = C.pink,
+	bold = true,
+	standout = true,
+      })
+
+      set(0, "CosmicPtrWarpNeutral", {
+	fg = C.cyan,
+      })
+
+      set(0, "@ptr.warp.in",      { link = "CosmicPtrWarpIn" })
+      set(0, "@ptr.warp.out",     { link = "CosmicPtrWarpOut" })
+      set(0, "@ptr.warp.neutral", { link = "CosmicPtrWarpNeutral" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++++++ — Semantic Black Holes
+    --------------------------------------------------------------------
+    local function apply_semantic_blackholes(C, set)
+      set(0, "CosmicBlackHole", {
+	fg = C.pink,
+	bold = true,
+	standout = true,
+      })
+
+      set(0, "CosmicBlackHoleWeak", {
+	fg = C.gray,
+	italic = true,
+      })
+
+      set(0, "@blackhole.strong", { link = "CosmicBlackHole" })
+      set(0, "@blackhole.weak",   { link = "CosmicBlackHoleWeak" })
+    end
 
     apply_ultra_plus_plus_plus(C, set)
     apply_ultra_plus_4(C, set)
@@ -974,6 +1060,10 @@ return {
     apply_semantic_energy_map(C, set)
     apply_branch_entropy_glow(C, set)
     apply_semantic_risk_zones(C, set)
+    apply_semantic_gravity(C, set)
+    apply_data_orbit_map(C, set)
+    apply_pointer_warp_glow(C, set)
+    apply_semantic_blackholes(C, set)
 
   end
 }
