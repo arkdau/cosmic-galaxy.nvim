@@ -515,6 +515,110 @@ return {
       set(0, "NoicePopupBorder", { fg = C.teal })
       set(0, "NoicePopup", { bg = "NONE" })
     end
+    --------------------------------------------------------------------
+    -- ULTRA++++++ — Semantic Context Glow
+    --------------------------------------------------------------------
+    local function apply_semantic_context_glow(C, set)
+      set(0, "CosmicContextFunction", {
+        bg = "#1e1e2e",
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicContextLoop", {
+        bg = "#221b2e",
+        fg = C.gold,
+        bold = true,
+      })
+
+      set(0, "CosmicContextConditional", {
+        bg = "#2a1f3d",
+        fg = C.violet,
+        bold = true,
+      })
+
+      set(0, "CosmicContextBlock", {
+        bg = "#181825",
+        fg = C.cyan,
+      })
+
+      -- Treesitter semantic groups
+      set(0, "@context.function", { link = "CosmicContextFunction" })
+      set(0, "@context.loop",     { link = "CosmicContextLoop" })
+      set(0, "@context.conditional", { link = "CosmicContextConditional" })
+      set(0, "@context.block",    { link = "CosmicContextBlock" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++ — Data Flow Heatmap
+    --------------------------------------------------------------------
+    local function apply_data_flow_heatmap(C, set)
+      set(0, "CosmicDataSource", {
+        fg = C.cyan,
+        bold = true,
+      })
+
+      set(0, "CosmicDataTransform", {
+        fg = C.teal,
+      })
+
+      set(0, "CosmicDataSink", {
+        fg = C.violet,
+        bold = true,
+      })
+
+      -- Treesitter semantic groups
+      set(0, "@data.source",     { link = "CosmicDataSource" })
+      set(0, "@data.transform",  { link = "CosmicDataTransform" })
+      set(0, "@data.sink",       { link = "CosmicDataSink" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++ — Pointer Flow Glow
+    --------------------------------------------------------------------
+    local function apply_pointer_flow_glow(C, set)
+      set(0, "CosmicPtrRead", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicPtrWrite", {
+        fg = C.ember,
+        bold = true,
+      })
+
+      set(0, "CosmicPtrAlias", {
+        fg = C.pink,
+      })
+
+      -- Treesitter semantic groups
+      set(0, "@pointer.read",  { link = "CosmicPtrRead" })
+      set(0, "@pointer.write", { link = "CosmicPtrWrite" })
+      set(0, "@pointer.alias", { link = "CosmicPtrAlias" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA++++++ — Memory Flow Glow
+    --------------------------------------------------------------------
+    local function apply_memory_flow_glow(C, set)
+      set(0, "CosmicMemAllocGlow", {
+        fg = C.green,
+        bold = true,
+      })
+
+      set(0, "CosmicMemFreeGlow", {
+        fg = C.ember,
+        bold = true,
+      })
+
+      set(0, "CosmicMemRiskGlow", {
+        fg = C.pink,
+        bold = true,
+        standout = true,
+      })
+
+      -- Treesitter semantic groups
+      set(0, "@memory.alloc", { link = "CosmicMemAllocGlow" })
+      set(0, "@memory.free",  { link = "CosmicMemFreeGlow" })
+      set(0, "@memory.risk",  { link = "CosmicMemRiskGlow" })
+    end
 
     apply_ultra_plus_plus_plus(C, set)
     apply_ultra_plus_4(C, set)
@@ -522,6 +626,10 @@ return {
     apply_ufo_heatmap(C, set)       -- folding heatmap
     apply_navic_glow(C, set)        -- breadcrumb glow
     apply_noice_semantics(C, set)   -- semantic messages
+    apply_semantic_context_glow(C, set)
+    apply_data_flow_heatmap(C, set)
+    apply_pointer_flow_glow(C, set)
+    apply_memory_flow_glow(C, set)
   end
 }
 
