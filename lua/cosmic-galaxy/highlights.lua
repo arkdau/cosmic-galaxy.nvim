@@ -1034,6 +1034,68 @@ return {
       set(0, "@blackhole.strong", { link = "CosmicBlackHole" })
       set(0, "@blackhole.weak",   { link = "CosmicBlackHoleWeak" })
     end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++++++ — Quantum Layer
+    --------------------------------------------------------------------
+    local function apply_quantum_layer(C, set)
+      ------------------------------------------------------------------
+      -- 1. Quantum Data Superposition
+      ------------------------------------------------------------------
+      set(0, "CosmicQuantumSuperposition", {
+	fg = C.teal,
+	italic = true,
+      })
+
+      set(0, "@quantum.superposition", { link = "CosmicQuantumSuperposition" })
+
+      ------------------------------------------------------------------
+      -- 2. Quantum Entanglement Glow
+      ------------------------------------------------------------------
+      set(0, "CosmicQuantumEntangledA", {
+	fg = C.violet,
+	bold = true,
+      })
+
+      set(0, "CosmicQuantumEntangledB", {
+	fg = C.pink,
+	bold = true,
+      })
+
+      set(0, "@quantum.entangled.a", { link = "CosmicQuantumEntangledA" })
+      set(0, "@quantum.entangled.b", { link = "CosmicQuantumEntangledB" })
+
+      ------------------------------------------------------------------
+      -- 3. Semantic Wormholes
+      ------------------------------------------------------------------
+      set(0, "CosmicWormholeEntry", {
+	fg = C.cyan,
+	bold = true,
+      })
+
+      set(0, "CosmicWormholeExit", {
+	fg = C.ember,
+	bold = true,
+	standout = true,
+      })
+
+      set(0, "@wormhole.entry", { link = "CosmicWormholeEntry" })
+      set(0, "@wormhole.exit",  { link = "CosmicWormholeExit" })
+
+      ------------------------------------------------------------------
+      -- 4. Temporal Causality Map
+      ------------------------------------------------------------------
+      set(0, "CosmicCausalityCause", {
+	fg = C.gold,
+	bold = true,
+      })
+
+      set(0, "CosmicCausalityEffect", {
+	fg = C.teal,
+      })
+
+      set(0, "@causality.cause",  { link = "CosmicCausalityCause" })
+      set(0, "@causality.effect", { link = "CosmicCausalityEffect" })
+    end
 
     apply_ultra_plus_plus_plus(C, set)
     apply_ultra_plus_4(C, set)
@@ -1064,6 +1126,7 @@ return {
     apply_data_orbit_map(C, set)
     apply_pointer_warp_glow(C, set)
     apply_semantic_blackholes(C, set)
+    apply_quantum_layer(C, set)
 
   end
 }
