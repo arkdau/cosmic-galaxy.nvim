@@ -238,7 +238,6 @@ return {
        set(0, "CosmicCallDepth3", { fg = C.violet })
        set(0, "CosmicCallDepth4", { fg = C.pink })
     end
-    apply_ultra_plus_plus_plus(C, set)
     --------------------------------------------------------------------
     -- ULTRA++++ — Semantic Flow Engine
     --------------------------------------------------------------------
@@ -368,7 +367,6 @@ return {
       set(0, "@punctuation.delimiter.loop",   { link = "CosmicIntentLoop" })
       set(0, "@punctuation.delimiter.flow",   { link = "CosmicFlowZoneProcess" })
     end
-    apply_ultra_plus_4(C, set)
     --------------------------------------------------------------------
     -- ULTRA+++++ — Pointer & Memory Flow + Complexity Glow
     --------------------------------------------------------------------
@@ -443,7 +441,87 @@ return {
       set(0, "@complexity.mid",  { link = "CosmicComplexityMid" })
       set(0, "@complexity.high", { link = "CosmicComplexityHigh" })
     end
-    apply_ultra_plus_5(C, set)
+    --------------------------------------------------------------------
+    -- ULTRA+++++ — nvim-ufo Folding Heatmap
+    --------------------------------------------------------------------
+    local function apply_ufo_heatmap(C, set)
+      -- poziomy foldów
+      set(0, "UfoFoldedFg", { fg = C.cyan })
+      set(0, "UfoFoldedFg2", { fg = C.teal })
+      set(0, "UfoFoldedFg3", { fg = C.violet })
+      set(0, "UfoFoldedFg4", { fg = C.pink })
+
+      -- tło foldów
+      set(0, "UfoFoldedBg", { bg = "#1a1a24" })
+      set(0, "UfoFoldedBgActive", { bg = "#222233", bold = true })
+
+      -- ikonki foldów
+      set(0, "UfoFoldedEllipsis", { fg = C.gold, bold = true })
+      set(0, "UfoFoldedCount", { fg = C.ember })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++ — nvim-navic Breadcrumb Glow
+    --------------------------------------------------------------------
+    local function apply_navic_glow(C, set)
+      -- ogólne
+      set(0, "NavicText", { fg = C.cyan })
+      set(0, "NavicSeparator", { fg = C.gray })
+
+      -- semantyczne elementy
+      set(0, "NavicIconsFile",        { fg = C.gold })
+      set(0, "NavicIconsModule",      { fg = C.teal })
+      set(0, "NavicIconsNamespace",   { fg = C.violet })
+      set(0, "NavicIconsPackage",     { fg = C.green })
+      set(0, "NavicIconsClass",       { fg = C.pink })
+      set(0, "NavicIconsMethod",      { fg = C.teal, bold = true })
+      set(0, "NavicIconsFunction",    { fg = C.teal })
+      set(0, "NavicIconsProperty",    { fg = C.cyan })
+      set(0, "NavicIconsField",       { fg = C.cyan })
+      set(0, "NavicIconsConstructor", { fg = C.ember })
+      set(0, "NavicIconsEnum",        { fg = C.violet })
+      set(0, "NavicIconsInterface",   { fg = C.green })
+      set(0, "NavicIconsVariable",    { fg = C.cyan })
+      set(0, "NavicIconsConstant",    { fg = C.gold })
+      set(0, "NavicIconsString",      { fg = C.pink })
+      set(0, "NavicIconsNumber",      { fg = C.gold })
+      set(0, "NavicIconsBoolean",     { fg = C.violet })
+      set(0, "NavicIconsArray",       { fg = C.teal })
+      set(0, "NavicIconsObject",      { fg = C.green })
+      set(0, "NavicIconsKey",         { fg = C.ember })
+      set(0, "NavicIconsNull",        { fg = C.gray })
+      set(0, "NavicIconsEnumMember",  { fg = C.violet })
+      set(0, "NavicIconsStruct",      { fg = C.green })
+      set(0, "NavicIconsEvent",       { fg = C.pink })
+      set(0, "NavicIconsOperator",    { fg = C.teal })
+      set(0, "NavicIconsTypeParameter", { fg = C.cyan })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++ — noice.nvim Semantic Messages
+    --------------------------------------------------------------------
+    local function apply_noice_semantics(C, set)
+      -- podstawowe komunikaty
+      set(0, "NoiceError",   { fg = C.pink, bold = true })
+      set(0, "NoiceWarn",    { fg = C.ember, bold = true })
+      set(0, "NoiceInfo",    { fg = C.teal })
+      set(0, "NoiceDebug",   { fg = C.gray })
+      set(0, "NoiceTrace",   { fg = C.violet })
+
+      -- LSP
+      set(0, "NoiceLspProgressTitle", { fg = C.gold, bold = true })
+      set(0, "NoiceLspProgressClient", { fg = C.teal })
+      set(0, "NoiceLspProgressSpinner", { fg = C.violet, bold = true })
+
+      -- popupy
+      set(0, "NoicePopupBorder", { fg = C.teal })
+      set(0, "NoicePopup", { bg = "NONE" })
+    end
+
+    apply_ultra_plus_plus_plus(C, set)
+    apply_ultra_plus_4(C, set)
+    apply_ultra_plus_5(C, set)      -- ULTRA+++++
+    apply_ufo_heatmap(C, set)       -- folding heatmap
+    apply_navic_glow(C, set)        -- breadcrumb glow
+    apply_noice_semantics(C, set)   -- semantic messages
   end
 }
 
