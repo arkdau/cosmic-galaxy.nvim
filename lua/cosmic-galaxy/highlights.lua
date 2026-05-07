@@ -619,6 +619,126 @@ return {
       set(0, "@memory.free",  { link = "CosmicMemFreeGlow" })
       set(0, "@memory.risk",  { link = "CosmicMemRiskGlow" })
     end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++ — Execution Path Tracing
+    --------------------------------------------------------------------
+    local function apply_execution_path_tracing(C, set)
+      set(0, "CosmicExecPathPrimary", {
+        fg = C.gold,
+        bold = true,
+        standout = true,
+      })
+
+      set(0, "CosmicExecPathSecondary", {
+        fg = C.ember,
+        bold = true,
+      })
+
+      set(0, "CosmicExecPathTertiary", {
+        fg = C.pink,
+      })
+
+      -- Treesitter semantic groups
+      set(0, "@exec.primary",   { link = "CosmicExecPathPrimary" })
+      set(0, "@exec.secondary", { link = "CosmicExecPathSecondary" })
+      set(0, "@exec.tertiary",  { link = "CosmicExecPathTertiary" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++ — Hot Path Glow
+    --------------------------------------------------------------------
+    local function apply_hot_path_glow(C, set)
+      set(0, "CosmicHotPath", {
+        fg = C.violet,
+        bold = true,
+        standout = true,
+      })
+
+      set(0, "CosmicWarmPath", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicColdPath", {
+        fg = C.cyan,
+      })
+
+      set(0, "@path.hot",  { link = "CosmicHotPath" })
+      set(0, "@path.warm", { link = "CosmicWarmPath" })
+      set(0, "@path.cold", { link = "CosmicColdPath" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++ — Dead Code Fade
+    --------------------------------------------------------------------
+    local function apply_dead_code_fade(C, set)
+      set(0, "CosmicDeadCode", {
+        fg = C.gray,
+        italic = true,
+      })
+
+      set(0, "@code.dead", { link = "CosmicDeadCode" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++ — Escape Analysis Glow
+    --------------------------------------------------------------------
+    local function apply_escape_analysis(C, set)
+      set(0, "CosmicEscapeSafe", {
+        fg = C.green,
+        bold = true,
+      })
+
+      set(0, "CosmicEscapeLeak", {
+        fg = C.pink,
+        bold = true,
+        standout = true,
+      })
+
+      set(0, "@escape.safe", { link = "CosmicEscapeSafe" })
+      set(0, "@escape.leak", { link = "CosmicEscapeLeak" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++ — Alias Tracking
+    --------------------------------------------------------------------
+    local function apply_alias_tracking(C, set)
+      set(0, "CosmicAliasPrimary", {
+        fg = C.teal,
+        bold = true,
+      })
+
+      set(0, "CosmicAliasSecondary", {
+        fg = C.cyan,
+      })
+
+      set(0, "CosmicAliasConflict", {
+        fg = C.ember,
+        bold = true,
+      })
+
+      set(0, "@alias.primary",   { link = "CosmicAliasPrimary" })
+      set(0, "@alias.secondary", { link = "CosmicAliasSecondary" })
+      set(0, "@alias.conflict",  { link = "CosmicAliasConflict" })
+    end
+    --------------------------------------------------------------------
+    -- ULTRA+++++++ — Lifetime Zones
+    --------------------------------------------------------------------
+    local function apply_lifetime_zones(C, set)
+      set(0, "CosmicLifetimeStack", {
+        fg = C.teal,
+      })
+
+      set(0, "CosmicLifetimeHeap", {
+        fg = C.violet,
+        bold = true,
+      })
+
+      set(0, "CosmicLifetimeGlobal", {
+        fg = C.gold,
+        bold = true,
+      })
+
+      set(0, "@lifetime.stack",  { link = "CosmicLifetimeStack" })
+      set(0, "@lifetime.heap",   { link = "CosmicLifetimeHeap" })
+      set(0, "@lifetime.global", { link = "CosmicLifetimeGlobal" })
+    end
 
     apply_ultra_plus_plus_plus(C, set)
     apply_ultra_plus_4(C, set)
@@ -630,6 +750,13 @@ return {
     apply_data_flow_heatmap(C, set)
     apply_pointer_flow_glow(C, set)
     apply_memory_flow_glow(C, set)
+    apply_execution_path_tracing(C, set)
+    apply_hot_path_glow(C, set)
+    apply_dead_code_fade(C, set)
+    apply_escape_analysis(C, set)
+    apply_alias_tracking(C, set)
+    apply_lifetime_zones(C, set)
+
   end
 }
 
