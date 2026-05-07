@@ -1,7 +1,11 @@
-local M = {}
+return {
+  apply = function(C)
+    local set = vim.api.nvim_set_hl
 
-function M.apply(C)
-  local set = vim.api.nvim_set_hl
+--local M = {}
+
+--function M.apply(C)
+--  local set = vim.api.nvim_set_hl
 
   --------------------------------------------------------------------
   -- UI (transparent)
@@ -111,10 +115,143 @@ function M.apply(C)
     bg = C.bg_active or "#11111b",
   })
 
+  --------------------------------------------------------------------
+  -- ULTRA+++ — Semantic Operators + Flow Heatmap
+  --------------------------------------------------------------------
+    local function apply_ultra_plus_plus_plus(C, set)
+    ------------------------------------------------------------------
+    -- 1. Semantic Operators (różne kolory dla różnych typów)
+    ------------------------------------------------------------------
+
+    -- logiczne: && || !
+    set(0, "CosmicOpLogic", {
+      fg = C.violet,
+      bold = true,
+    })
+
+    -- porównania: == != <= >= < >
+    set(0, "CosmicOpCompare", {
+      fg = C.gold,
+      bold = true,
+    })
+
+    -- arytmetyczne: + - * / %
+    set(0, "CosmicOpMath", {
+      fg = C.ember,
+      bold = true,
+    })
+
+    -- przypisania: = += -= *= /= %=
+    set(0, "CosmicOpAssign", {
+      fg = C.green,
+      bold = true,
+    })
+
+    -- przepływ: -> => ::
+    set(0, "CosmicOpFlow", {
+      fg = C.teal,
+      bold = true,
+      standout = true,
+    })
+
+    ------------------------------------------------------------------
+    -- 2. Flow Heatmap (gradient przepływu kodu)
+    ------------------------------------------------------------------
+
+    -- niski poziom przepływu (np. zwykłe wywołania)
+    set(0, "CosmicFlowLow", {
+      fg = C.cyan,
+    })
+
+    -- średni poziom (np. chain calls: a.b().c().d())
+    set(0, "CosmicFlowMid", {
+      fg = C.teal,
+      bold = true,
+    })
+
+    -- wysoki poziom (np. pipelines, lambdy, match)
+    set(0, "CosmicFlowHigh", {
+      fg = C.violet,
+      bold = true,
+      standout = true,
+    })
+
+    ------------------------------------------------------------------
+    -- 3. Semantic Treesitter Groups
+    ------------------------------------------------------------------
+
+    -- call chains: foo().bar().baz()
+    set(0, "@function.call.chain", {
+      link = "CosmicFlowMid",
+    })
+
+    -- pipelines: |> >> -> =>
+    set(0, "@operator.pipeline", {
+      link = "CosmicFlowHigh",
+    })
+
+    -- lambdy: (x) => x + 1
+    set(0, "@function.lambda", {
+      fg = C.pink,
+      bold = true,
+    })
+
+    -- match / switch
+    set(0, "@keyword.match", {
+      fg = C.violet,
+      bold = true,
+    })
+
+    -- loops
+    set(0, "@keyword.repeat", {
+      fg = C.gold,
+      bold = true,
+    })
+
+    -- return flow
+    set(0, "@keyword.return", {
+      fg = C.teal,
+      bold = true,
+    })
+
+    ------------------------------------------------------------------
+    -- 4. Dynamic punctuation accents
+    ------------------------------------------------------------------
+
+    set(0, "@punctuation.delimiter.flow", {
+      link = "CosmicOpFlow",
+    })
+
+    set(0, "@punctuation.delimiter.logic", {
+      link = "CosmicOpLogic",
+    })
+
+    set(0, "@punctuation.delimiter.math", {
+      link = "CosmicOpMath",
+    })
+
+    set(0, "@punctuation.delimiter.compare", {
+      link = "CosmicOpCompare",
+    })
+
+    ------------------------------------------------------------------
+    -- 5. Heatmap dla call depth (głębokie wywołania)
+    ------------------------------------------------------------------
+
+    set(0, "CosmicCallDepth1", { fg = C.cyan })
+    set(0, "CosmicCallDepth2", { fg = C.teal })
+    set(0, "CosmicCallDepth3", { fg = C.violet })
+    set(0, "CosmicCallDepth4", { fg = C.pink })
+  end
+
   -- Możesz potem powiązać to z CursorLine:
   -- set(0, "CursorLine", { link = "CosmicActiveLine" })
 
-end
+--end
 
-return M
+--return M
+
+   apply_ultra_plus_plus_plus(C, set)
+  end
+}
 
