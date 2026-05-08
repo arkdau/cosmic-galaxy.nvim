@@ -19,3 +19,17 @@ end
 
 return M
 
+local config = require("cosmic-galaxy.config")
+config.experimental = true
+
+return {
+  apply = function(C, set)
+    if config.experimental then
+      require("cosmic-galaxy.modes.experimental").apply(C, set)
+    else
+      require("cosmic-galaxy.modes.official").apply(C, set)
+    end
+  end
+}
+
+
