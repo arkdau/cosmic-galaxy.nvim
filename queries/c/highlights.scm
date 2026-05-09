@@ -1,135 +1,115 @@
-;; ------------------------------------------------------------
-;; Pointer Flow (realne, działające)
-;; ------------------------------------------------------------
+;; ============================================================
+;; POINTER FLOW
+;; ============================================================
 
-;;(pointer_expression
-;;  "*" @pointer.read)
+;; ptr->field → warp out
+(pointer_expression
+  operator: "->"
+) @ptr.warp.out
 
-;;(unary_expression
-;;  "&" @pointer.address)
-
-;;(field_expression
-;;  "->" @pointer.write)
-
-
-;; Pointer Warp Glow
-;; ptr->field
-((pointer_expression
-   operator: "->") @ptr.warp.out)
-
-;; *ptr
-((unary_expression
-   operator: "*") @ptr.warp.in)
+;; *ptr → warp in
+(unary_expression
+  operator: "*"
+) @ptr.warp.in
 
 ;; neutralne użycie wskaźnika
-((identifier) @ptr.warp.neutral)
+(identifier) @ptr.warp.neutral
 
-;; ------------------------------------------------------------
-;; Memory Flow (realne, działające)
-;; ------------------------------------------------------------
 
-;;(call_expression
-;;  function: (identifier) @memory.alloc
-;;  (#eq? @memory.alloc "malloc"))
+;; ============================================================
+;; MEMORY FLOW
+;; ============================================================
 
-;;(call_expression
-;;  function: (identifier) @memory.free
-;;  (#eq? @memory.free "free"))
-
-;; Memory Flow Glow
 ;; malloc / calloc / realloc → alloc
 (call_expression
-  function: (identifier) @fn)
+  function: (identifier) @fn
   (#match? @fn "malloc|calloc|realloc")
-  @memory.alloc)
+) @memory.alloc
 
 ;; free → free
 (call_expression
-  function: (identifier) @fn)
+  function: (identifier) @fn
   (#eq? @fn "free")
-  @memory.free)
+) @memory.free
 
 
-;; ------------------------------------------------------------
-;; Execution Path (realne, uproszczone)
-;; ------------------------------------------------------------
+;; ============================================================
+;; SEMANTIC GRAVITY
+;; ============================================================
 
-;;(if_statement) @exec.primary
-;;(while_statement) @exec.secondary
-;;(for_statement) @exec.secondary
-;;(return_statement) @exec.tertiary
+(if_statement) @gravity.medium
+(switch_statement) @gravity.strong
+(else_clause) @gravity.weak
 
-;; if / else / switch
-((if_statement) @gravity.medium)
-((switch_statement) @gravity.strong)
-((else_clause) @gravity.weak)
 
-;; ------------------------------------------------------------
-;; Risk Zones (realne, uproszczone)
-;; ------------------------------------------------------------
+;; ============================================================
+;; RISK ZONES
+;; ============================================================
 
-;; NULL → najwyższe ryzyko
-((identifier) @risk.danger
-  (#eq? @risk.danger "NULL"))
+;; NULL → danger
+(identifier) @risk.danger
+  (#eq? @risk.danger "NULL")
 
-;; 0 jako wskaźnik → ryzyko
-((number_literal) @risk.warning
-  (#eq? @risk.warning "0"))
+;; 0 jako pointer literal → warning
+(number_literal) @risk.warning
+  (#eq? @risk.warning "0")
 
-;; free(NULL) → ryzyko
+;; free(NULL) → danger
 (call_expression
   function: (identifier) @fn
-  arguments: (argument_list (identifier) @arg))
+  arguments: (argument_list (identifier) @arg)
   (#eq? @fn "free")
   (#eq? @arg "NULL")
-  @risk.danger)
-
-;; ------------------------------------------------------------
-;; Branch Entropy
-;; ------------------------------------------------------------
-
-;; proste warunki → low entropy
-((binary_expression
-   operator: "==") @entropy.low)
-
-;; złożone warunki → medium
-((binary_expression
-   operator: "&&") @entropy.medium)
-
-;; bardzo złożone → high
-((binary_expression
-   operator: "||") @entropy.high)
-
-;; ------------------------------------------------------------
-;; Wormholes (chain calls)
-;; ------------------------------------------------------------
-;; foo()->bar()->baz()
-((call_expression
-   (call_expression
-     (call_expression) @wormhole.entry))
-   @wormhole.exit)
+) @risk.danger
 
 
-;; ------------------------------------------------------------
-;; Quantum Layer
-;; ------------------------------------------------------------
-;; a = b + c;
-((binary_expression
-   operator: "+") @quantum.superposition)
+;; ============================================================
+;; BRANCH ENTROPY
+;; ============================================================
 
-((identifier) @quantum.entangled.a)
-((identifier) @quantum.entangled.b)
+;; ==
+(binary_expression
+  operator: "=="
+) @entropy.low
+
+;; &&
+(binary_expression
+  operator: "&&"
+) @entropy.medium
+
+;; ||
+(binary_expression
+  operator: "||"
+) @entropy.high
 
 
-;; ------------------------------------------------------------
-;; Semantic Energy Map
-;; ------------------------------------------------------------
-;; low energy
-((identifier) @energy.low)
+;; ============================================================
+;; WORMHOLES (chain calls)
+;; ============================================================
 
-;; medium energy
-((binary_expression) @energy.medium)
+(call_expression
+  (call_expression
+    (call_expression) @wormhole.entry)
+) @wormhole.exit
 
-;; high energy
-((call_expression) @energy.high)
 
+;; ============================================================
+;; QUANTUM LAYER
+;; ============================================================
+
+;; a + b
+(binary_expression
+  operator: "+"
+) @quantum.superposition
+
+(identifier) @quantum.entangled.a
+(identifier) @quantum.entangled.b
+
+
+;; ============================================================
+;; SEMANTIC ENERGY MAP
+;; ============================================================
+
+(identifier) @energy.low
+(binary_expression) @energy.medium
+(call_expression) @energy.high
