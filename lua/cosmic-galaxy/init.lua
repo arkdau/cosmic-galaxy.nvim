@@ -17,29 +17,16 @@ function M.setup(opts)
   require("cosmic-galaxy.highlights").apply(palette)
 end
 
-
+-- tryb experimental / official
 local config = require("cosmic-galaxy.config")
-M.apply(C, set)
-  apply = function(C, set)
-    if config.experimental then
-      require("cosmic-galaxy.modes.experimental").apply(C, set)
-    else
-      require("cosmic-galaxy.modes.official").apply(C, set)
-    end
+
+function M.apply(C, set)
+  if config.experimental then
+    require("cosmic-galaxy.modes.experimental").apply(C, set)
+  else
+    require("cosmic-galaxy.modes.official").apply(C, set)
+  end
 end
 
 return M
 
-
-
---local config = require("cosmic-galaxy.config")
---config.experimental = true
---return {
---  apply = function(C, set)
---    if config.experimental then
---      require("cosmic-galaxy.modes.experimental").apply(C, set)
---    else
---      require("cosmic-galaxy.modes.official").apply(C, set)
---    end
---  end
---}
