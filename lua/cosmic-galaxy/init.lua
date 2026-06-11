@@ -33,8 +33,16 @@ function M.setup(opts)
 
 	-- ustaw highlighty w Neovim
 	for group, spec in pairs(highlights) do
-		vim.api.nvim_set_hl(0, group, spec)
+		if type(spec) == "table" then
+			vim.api.nvim_set_hl(0, group, spec)
+		else
+			vim.notify(
+				"cosmic-galaxy: highlight '" .. group .. "' ma nieprawidłową wartość (nie tabela)",
+				vim.log.levels.WARN
+			)
+		end
 	end
+
 	-- aktywacja custom Treesitter queries
 	pcall(function()
 		vim.treesitter.query.set(
