@@ -21,26 +21,22 @@ function M.setup(opts)
 	end
 
 	-- załaduj highlighty ULTRA++
-	local highlights = require("cosmic-galaxy.highlights").apply(palette)
+	require("cosmic-galaxy.highlights").apply(palette)
 
 	-- Zastosuj tryb (embedded nadpisuje highlighty)
 	local overrides = modes[mode] or {}
 
-	-- scalanie highlightów
-	for group, spec in pairs(overrides) do
-		highlights[group] = spec
-	end
 
 	-- ustaw highlighty w Neovim
-	for group, spec in pairs(highlights) do
-		if type(spec) == "table" then
-			vim.api.nvim_set_hl(0, group, spec)
-		else
-			vim.notify(
-				"cosmic-galaxy: highlight '" .. group .. "' ma nieprawidłową wartość (nie tabela)",
-				vim.log.levels.WARN
-			)
-		end
+	--for group, spec in pairs(highlights) do
+	--	if type(spec) == "table" then
+	--		vim.api.nvim_set_hl(0, group, spec)
+	--	else
+	--		vim.notify(
+	--			"cosmic-galaxy: highlight '" .. group .. "' ma nieprawidłową wartość (nie tabela)",
+	--			vim.log.levels.WARN
+	--		)
+	--	end
 	end
 
 	-- aktywacja custom Treesitter queries
