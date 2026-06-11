@@ -25,18 +25,8 @@ function M.setup(opts)
 
 	-- Zastosuj tryb (embedded nadpisuje highlighty)
 	local overrides = modes[mode] or {}
-
-
-	-- ustaw highlighty w Neovim
-	--for group, spec in pairs(highlights) do
-	--	if type(spec) == "table" then
-	--		vim.api.nvim_set_hl(0, group, spec)
-	--	else
-	--		vim.notify(
-	--			"cosmic-galaxy: highlight '" .. group .. "' ma nieprawidłową wartość (nie tabela)",
-	--			vim.log.levels.WARN
-	--		)
-	--	end
+	for group, spec in pairs(overrides) do
+		vim.api.nvim_set_hl(0, group, spec)
 	end
 
 	-- aktywacja custom Treesitter queries
