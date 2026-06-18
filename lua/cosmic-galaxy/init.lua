@@ -28,15 +28,17 @@ function M.setup(opts)
 	for group, spec in pairs(overrides) do
 		vim.api.nvim_set_hl(0, group, spec)
 	end
+	
+	-- Load STM32 Treesitter queries
+    pcall(function()
+      local query_path = vim.fn.stdpath("data")
+        .. "/lazy/cosmic-galaxy.nvim/queries/c/cosmic-stm32.scm"
 
-	-- aktywacja custom Treesitter queries
-	pcall(function()
-		vim.treesitter.query.set(
-			"c",
-			"cosmic_stm32",
-			vim.fn.readfile(vim.fn.stdpath("data") .. "/lazy/cosmic-galaxy.nvim/queries/c/cosmic-stm32.scm")
-		)
-	end)
+      if vim.fn.filereadable(query_path) == 1 then
+        local content = table.concat(vim.fn.readfile(query_path), "\n")
+        vim.treesitter.query.set("c", "cosmic_stm32", content)
+      end
+    end)
 end
 
 -- tryb experimental / official

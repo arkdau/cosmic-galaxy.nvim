@@ -2,19 +2,37 @@
 
 local M = {}
 
--- Nadpisania pod tryb "embedded" / STM32
+-- Kolory STM32 (nadpisania)
 M.overrides = {
-	-- Peryferia (GPIOA, RCC, TIM2, USART1)
-	["@stm32.peripheral"] = { fg = "#ffcc66", bold = true },
+  -- ============================
+  --  PERYFERIA (GPIOA, RCC, TIM)
+  -- ============================
+  ["@stm32.peripheral"] = {
+    fg = "#ffcc66",  -- złoty
+    bold = true,
+  },
 
-	-- Rejestry (CRL, CRH, APB2ENR, BRR, CNT)
-	["@stm32.register"] = { fg = "#ff9966" },
+  -- ============================
+  --  REJESTRY (CRL, APB2ENR, CNT)
+  -- ============================
+  ["@stm32.register"] = {
+    fg = "#ff9966",  -- pomarańczowy
+  },
 
-	-- Typy CMSIS (GPIO_TypeDef, RCC_TypeDef)
-	["@stm32.type"] = { fg = "#66d9ef", italic = true },
+  -- ============================
+  --  TYPY CMSIS (GPIO_TypeDef)
+  -- ============================
+  ["@stm32.type"] = {
+    fg = "#66d9ef",  -- cyan
+    italic = true,
+  },
 
-	-- Bitfieldy (GPIO_CRH_MODE9, RCC_APB2ENR_IOPAEN)
-	["@stm32.bitfield"] = { fg = "#ff6699" },
+  -- ============================
+  --  BITFIELDY (GPIO_CRH_MODE9)
+  -- ============================
+  ["@stm32.bitfield"] = {
+    fg = "#ff6699",  -- różowy
+  },
 }
 
 return M

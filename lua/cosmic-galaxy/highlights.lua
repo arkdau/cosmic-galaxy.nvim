@@ -693,5 +693,31 @@ return {
     apply_pointer_warp_glow(C, set)
     apply_semantic_blackholes(C, set)
     apply_quantum_layer(C, set)
+    
+    -- ============================
+    --  STM32 — SEMANTIC TOKENS
+    -- ============================
+
+    -- Peryferia (GPIOA, RCC, USART1)
+    vim.api.nvim_set_hl(0, "@lsp.type.peripheral", { link = "@stm32.peripheral" })
+    vim.api.nvim_set_hl(0, "@lsp.typemod.variable.global", { link = "@stm32.peripheral" })
+
+    -- Rejestry (CRL, APB2ENR)
+    vim.api.nvim_set_hl(0, "@lsp.type.member", { link = "@stm32.register" })
+
+    -- Typy CMSIS (GPIO_TypeDef)
+    vim.api.nvim_set_hl(0, "@lsp.type.type", { link = "@stm32.type" })
+
+    -- Bitfieldy (RCC_APB2ENR_IOPAEN)
+    vim.api.nvim_set_hl(0, "@lsp.type.macro", { link = "@stm32.bitfield" })
+
+    -- volatile (ISR, memory-mapped I/O)
+    vim.api.nvim_set_hl(0, "@lsp.typemod.variable.volatile", { fg = "#ff6699", bold = true })
+    
+    -- memory‑mapped I/O
+    vim.api.nvim_set_hl(0, "@lsp.typemod.variable.volatile", { fg = "#ff6699", bold = true })
+    vim.api.nvim_set_hl(0, "@lsp.typemod.operator.dereference", { fg = "#ffcc66", bold = true })
+    vim.api.nvim_set_hl(0, "@lsp.typemod.operator.address", { fg = "#66d9ef" })
+    
   end
 }
