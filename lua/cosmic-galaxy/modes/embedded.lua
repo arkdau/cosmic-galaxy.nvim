@@ -39,6 +39,12 @@ M.overrides = {
   
   ["@stm32.isr"] = { fg = "#ff5577", bold = true },
   ["@stm32.isr.reg"] = { fg = "#ffaa77" },
+  
+  -- MMIO
+  ["@stm32.mmio.deref"] = { fg = "#ffcc66", bold = true },
+  ["@stm32.mmio.address"] = { fg = "#66d9ef" },
+  ["@stm32.mmio.volatile"] = { fg = "#ff6699", italic = true },
+
 
 }
 

@@ -57,3 +57,12 @@
 ((identifier) @stm32.isr
   (#match? @stm32.isr "^(__disable_irq|__enable_irq|__WFI|__WFE|__SEV)$"))
 
+((pointer_expression
+    (unary_expression "*" @stm32.mmio.deref)
+    (parenthesized_expression
+      (cast_expression
+        (type_descriptor)
+        (number_literal) @stm32.mmio.address)))
+
+((type_qualifier) @stm32.mmio.volatile
+  (#eq? @stm32.mmio.volatile "volatile"))
