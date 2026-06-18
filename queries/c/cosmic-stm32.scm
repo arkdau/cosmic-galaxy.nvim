@@ -48,3 +48,12 @@
   (#match? @stm32.register
     "^(LL_[A-Z0-9_]+|HAL_[A-Z0-9_]+)$"))
 
+((identifier) @stm32.peripheral
+  (#match? @stm32.peripheral "^(EXTI|NVIC|SysTick)$"))
+
+((field_identifier) @stm32.register
+  (#match? @stm32.register "^(IMR|EMR|RTSR|FTSR|PR|ISER|ICER|ISPR|ICPR|LOAD|VAL|CTRL)$"))
+  
+((identifier) @stm32.isr
+  (#match? @stm32.isr "^(__disable_irq|__enable_irq|__WFI|__WFE|__SEV)$"))
+

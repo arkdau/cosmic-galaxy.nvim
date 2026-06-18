@@ -36,6 +36,9 @@ M.overrides = {
   
   -- TEST: widoczne tylko w trybie embedded
   ["@embedded.test"] = { fg = "#ff00ff", bold = true },
+  
+  ["@stm32.isr"] = { fg = "#ff5577", bold = true },
+  ["@stm32.isr.reg"] = { fg = "#ffaa77" },
 
 }
 

@@ -719,5 +719,8 @@ return {
     vim.api.nvim_set_hl(0, "@lsp.typemod.operator.dereference", { fg = "#ffcc66", bold = true })
     vim.api.nvim_set_hl(0, "@lsp.typemod.operator.address", { fg = "#66d9ef" })
     
+    vim.api.nvim_set_hl(0, "@lsp.typemod.variable.volatile", { link = "@stm32.isr" })
+    vim.api.nvim_set_hl(0, "@lsp.type.function", { link = "@stm32.isr" })
+   
   end
 }
