@@ -27,3 +27,24 @@
 
 ((identifier) @embedded.test
   (#match? @embedded.test "^__embedded_test_variable$"))
+
+;; ================================
+;;  STM32 REGISTER BASE ADDRESSES
+;; ================================
+((identifier) @stm32.peripheral
+  (#match? @stm32.peripheral
+    "^(GPIO[A-K]_BASE|RCC_BASE|FLASH_BASE|EXTI_BASE|AFIO_BASE|DMA[1-2]_BASE|USART[1-6]_BASE|TIM[1-8]_BASE)$"))
+
+;; CMSIS global base macros
+((identifier) @stm32.peripheral
+  (#match? @stm32.peripheral
+    "^(PERIPH_BASE|APB1PERIPH_BASE|APB2PERIPH_BASE|AHBPERIPH_BASE)$"))
+    
+((identifier) @stm32.type
+  (#match? @stm32.type "^[A-Z][A-Za-z0-9_]*_TypeDef$"))
+
+;; LL/HAL register access macros
+((identifier) @stm32.register
+  (#match? @stm32.register
+    "^(LL_[A-Z0-9_]+|HAL_[A-Z0-9_]+)$"))
+
