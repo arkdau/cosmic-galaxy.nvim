@@ -10,6 +10,7 @@ local modes = {
 function M.setup(opts)
 	opts = opts or {}
 	local mode = opts.mode or "default"
+	M._active_mode = mode
 
 	-- wybór palety (domyślnie cosmic_nvim)
 	local palette_name = opts.palette or "cosmic_nvim"

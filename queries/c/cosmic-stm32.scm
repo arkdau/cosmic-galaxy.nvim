@@ -24,3 +24,6 @@
 ((identifier) @stm32.bitfield
   (#match? @stm32.bitfield
     "^[A-Z0-9_]+_(EN|RST|MODE[0-9]+|CNF[0-9]+|PE|IE|IF)$"))
+
+((identifier) @embedded.test
+  (#match? @embedded.test "^__embedded_test_variable$"))

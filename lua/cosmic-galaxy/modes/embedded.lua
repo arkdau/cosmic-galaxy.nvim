@@ -33,6 +33,10 @@ M.overrides = {
   ["@stm32.bitfield"] = {
     fg = "#ff6699",  -- różowy
   },
+  
+  -- TEST: widoczne tylko w trybie embedded
+  ["@embedded.test"] = { fg = "#ff00ff", bold = true },
+
 }
 
 return M
