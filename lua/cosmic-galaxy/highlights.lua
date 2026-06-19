@@ -699,28 +699,41 @@ return {
     -- ============================
 
     -- Peryferia (GPIOA, RCC, USART1)
-    vim.api.nvim_set_hl(0, "@lsp.type.peripheral", { link = "@stm32.peripheral" })
-    vim.api.nvim_set_hl(0, "@lsp.typemod.variable.global", { link = "@stm32.peripheral" })
+    set(0, "@lsp.type.peripheral", { link = "@stm32.peripheral" })
+    set(0, "@lsp.typemod.variable.global", { link = "@stm32.peripheral" })
 
     -- Rejestry (CRL, APB2ENR)
-    vim.api.nvim_set_hl(0, "@lsp.type.member", { link = "@stm32.register" })
+    set(0, "@lsp.type.member", { link = "@stm32.register" })
 
     -- Typy CMSIS (GPIO_TypeDef)
-    vim.api.nvim_set_hl(0, "@lsp.type.type", { link = "@stm32.type" })
+    set(0, "@lsp.type.type", { link = "@stm32.type" })
 
     -- Bitfieldy (RCC_APB2ENR_IOPAEN)
-    vim.api.nvim_set_hl(0, "@lsp.type.macro", { link = "@stm32.bitfield" })
+    set(0, "@lsp.type.macro", { link = "@stm32.bitfield" })
 
     -- volatile (ISR, memory-mapped I/O)
-    vim.api.nvim_set_hl(0, "@lsp.typemod.variable.volatile", { fg = "#ff6699", bold = true })
+    set(0, "@lsp.typemod.variable.volatile", { fg = "#ff6699", bold = true })
     
     -- memory‑mapped I/O
-    vim.api.nvim_set_hl(0, "@lsp.typemod.variable.volatile", { fg = "#ff6699", bold = true })
-    vim.api.nvim_set_hl(0, "@lsp.typemod.operator.dereference", { fg = "#ffcc66", bold = true })
-    vim.api.nvim_set_hl(0, "@lsp.typemod.operator.address", { fg = "#66d9ef" })
+    set(0, "@lsp.typemod.variable.volatile", { fg = "#ff6699", bold = true })
+    set(0, "@lsp.typemod.operator.dereference", { fg = "#ffcc66", bold = true })
+    set(0, "@lsp.typemod.operator.address", { fg = "#66d9ef" })
     
-    vim.api.nvim_set_hl(0, "@lsp.typemod.variable.volatile", { link = "@stm32.isr" })
-    vim.api.nvim_set_hl(0, "@lsp.type.function", { link = "@stm32.isr" })
+    set(0, "@lsp.typemod.variable.volatile", { link = "@stm32.isr" })
+    set(0, "@lsp.type.function", { link = "@stm32.isr" })
+    
+    -- HAL functions
+    set(0, "@lsp.type.function.hal", { link = "@stm32.hal" })
+    set(0, "@lsp.typemod.function.hal", { link = "@stm32.hal" })
+
+    -- LL functions
+    set(0, "@lsp.type.function.ll", { link = "@stm32.ll" })
+    set(0, "@lsp.typemod.function.ll", { link = "@stm32.ll" })
+
+    -- HAL/LL constants
+    set(0, "@lsp.type.macro.hal", { link = "@stm32.hal.const" })
+    set(0, "@lsp.type.macro.ll", { link = "@stm32.ll.const" })
+
    
   end
 }

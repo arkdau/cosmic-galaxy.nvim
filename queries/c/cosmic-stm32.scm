@@ -66,3 +66,25 @@
 
 ((type_qualifier) @stm32.mmio.volatile
   (#eq? @stm32.mmio.volatile "volatile"))
+  
+  ;; ================================
+  ;;  STM32 HAL FUNCTIONS
+  ;; ================================
+  ((identifier) @stm32.hal
+    (#match? @stm32.hal "^HAL_[A-Za-z0-9_]+$"))
+
+  ;; ================================
+  ;;  STM32 LL FUNCTIONS
+  ;; ================================
+  ((identifier) @stm32.ll
+    (#match? @stm32.ll "^LL_[A-Za-z0-9_]+$"))
+
+  ;; ================================
+  ;;  HAL/LL CONSTANTS
+  ;; ================================
+  ((identifier) @stm32.hal.const
+    (#match? @stm32.hal.const "^GPIO_PIN_[0-9]+$"))
+
+  ((identifier) @stm32.ll.const
+    (#match? @stm32.ll.const "^LL_[A-Z0-9_]+$"))
+

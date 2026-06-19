@@ -44,8 +44,27 @@ M.overrides = {
   ["@stm32.mmio.deref"] = { fg = "#ffcc66", bold = true },
   ["@stm32.mmio.address"] = { fg = "#66d9ef" },
   ["@stm32.mmio.volatile"] = { fg = "#ff6699", italic = true },
+  
+  -- HAL functions
+  ["@stm32.hal"] = {
+    fg = "#66d9ef", -- cyan
+    bold = true,
+  }
 
+  -- LL functions
+  ["@stm32.ll"] = {
+    fg = "#ffcc66", -- gold
+    bold = true,
+  }
 
+  -- HAL/LL constants
+  ["@stm32.hal.const"] = {
+    fg = "#ff6699", -- pink
+  }
+
+  ["@stm32.ll.const"] = {
+    fg = "#ff9966", -- orange
+  }
 }
 
 return M
