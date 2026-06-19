@@ -49,22 +49,22 @@ M.overrides = {
   ["@stm32.hal"] = {
     fg = "#66d9ef", -- cyan
     bold = true,
-  }
+  },
 
   -- LL functions
   ["@stm32.ll"] = {
     fg = "#ffcc66", -- gold
     bold = true,
-  }
+  },
 
   -- HAL/LL constants
   ["@stm32.hal.const"] = {
     fg = "#ff6699", -- pink
-  }
+  },
 
   ["@stm32.ll.const"] = {
     fg = "#ff9966", -- orange
-  }
+  },
 }
 
 return M
